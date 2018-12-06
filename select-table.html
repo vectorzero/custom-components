@@ -8,39 +8,40 @@
     <style>
         @import url("//unpkg.com/element-ui@2.4.8/lib/theme-chalk/index.css");
         .select-head {
-            display: flex;
-            background: #ccc;
-            height: 34px;
-            font-size: 14px;
+					display: flex;
+					background: #ccc;
+					height: 34px;
+					font-size: 14px;
         }
         .select-head div{
-            width: 50%;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #ccc;
-            border-right: 1px solid #fff;
-            justify-content: center; 
+					display: flex;
+					align-items: center;
+					border-bottom: 1px solid #ccc;
+					border-right: 1px solid #fff;
+					justify-content: center; 
         }
         .select-head div:last-child {
-            border-right: 0;
+					border-right: 0;
         }
         .select-label {
-            display: flex;
+					display: flex;
         }
         .select-label div{
-            width: 50%;
-            text-align: center;
-            border-right: 1px solid #ccc;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					text-align: center;
+					border-right: 1px solid #ccc;
         }
         .select-label div:last-child {
-            border-right: 0;
+					border-right: 0;
         }
         .el-select-dropdown__item {
-            border-bottom: 1px solid #ccc;
-            padding: 0
+					border-bottom: 1px solid #ccc;
+					padding: 0
         }
         .el-select-dropdown__item:nth-child(odd) {
-            background: #fafafa
+					background: #fafafa
         }
     </style>
 </head>
@@ -52,17 +53,17 @@
             <el-select v-model="value" placeholder="请选择">
                 <template>
                     <div class="select-head">
-                        <div>名称</div>
-                        <div>编号</div>
-                        <div>索引</div>
+                        <div style="width: 150px;">名称</div>
+                        <div style="width: 50px;">编号</div>
+                        <div style="width: 50px;">索引</div>
                     </div>
                 </template>
                 <el-option v-for="(item,index) in options" :key="item.value" :label="item.label" :value="item.value">
                     <template>
                         <div class="select-label">
-                            <div>{{item.label}}</div>
-                            <div>{{item.value}}</div>
-                            <div>{{index}}</div>
+                            <div style="width: 150px;" :title="item.label">{{item.label}}</div>
+                            <div style="width: 50px;">{{item.value}}</div>
+                            <div style="width: 50px;">{{index}}</div>
                         </div>
                     </template>
                 </el-option>
@@ -75,7 +76,7 @@
                     return {
                         options: [{
                             value: '选项1',
-                            label: '黄金糕'
+                            label: '黄金糕黄金糕黄金糕黄金糕'
                         }, {
                             value: '选项2',
                             label: '双皮奶'
