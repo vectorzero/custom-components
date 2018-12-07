@@ -7,8 +7,9 @@
     <title>Document</title>
     <style>
         @import url("//unpkg.com/element-ui@2.4.8/lib/theme-chalk/index.css");
+					/* 使用less/scss时,用.select-table包住这些类,以免污染其他普通的el-select */
         .select-head {
-					/* position: fixed; */
+					position: fixed;
 					display: flex;
 					background: #ccc;
 					height: 34px;
@@ -45,7 +46,7 @@
         .el-select-dropdown__item:nth-child(odd) {
 					background: #fafafa
         }
-				.el-select-dropdown__item:first-child {
+				.el-select-dropdown__item:first-of-type {
 					margin-top: 34px;
 				}
     </style>
@@ -55,23 +56,31 @@
     <script src="//unpkg.com/element-ui@2.4.8/lib/index.js"></script>
     <div id="app">
         <template>
-            <el-select class="select-table" v-model="value" placeholder="请选择">
-                <template>
-                    <div class="select-head">
-                        <div style="width: 150px;">名称</div>
-                        <div style="width: 50px;">编号</div>
-                        <div style="width: 50px;">索引</div>
-                    </div>
-                </template>
-                <el-option v-for="(item,index) in options" :key="item.value" :label="item.label" :value="item.value">
-                    <template>
-                        <div class="select-label">
-                            <div style="width: 150px;" :title="item.label">{{item.label}}</div>
-                            <div style="width: 50px;">{{item.value}}</div>
-                            <div style="width: 50px;">{{index}}</div>
-                        </div>
-                    </template>
-                </el-option>
+						<el-select 
+							popper-class="select-table"
+							v-model="value" 
+							placeholder="请选择"
+							clearable
+							filterable
+							remote
+							:remote-method="getRemoteData"
+						>
+							<template>
+							<div class="select-head">
+								<div style="width: 150px;">名称</div>
+								<div style="width: 50px;">编号</div>
+								<div style="width: 50px;">索引</div>
+							</div>
+							</template>
+							<el-option v-for="(item,index) in options" :key="item.value" :label="item.label" :value="item.value">
+									<template>
+											<div class="select-label">
+													<div style="width: 150px;" :title="item.label">{{item.label}}</div>
+													<div style="width: 50px;">{{item.value}}</div>
+													<div style="width: 50px;">{{index}}</div>
+											</div>
+									</template>
+							</el-option>
             </el-select>
         </template>
     </div>
@@ -79,34 +88,42 @@
         var Main = {
                 data() {
                     return {
-                        options: [{
-                            value: '选项1',
-                            label: '黄金糕黄金糕黄金糕黄金糕'
-                        }, {
-                            value: '选项2',
-                            label: '双皮奶'
-                        }, {
-                            value: '选项3',
-                            label: '蚵仔煎'
-                        }, {
-                            value: '选项4',
-                            label: '龙须面'
-                        }, {
-                            value: '选项5',
-                            label: '北京烤鸭'
-                        }, {
-                            value: '选项6',
-                            label: '北京烤鸭'
-                        }, {
-                            value: '选项7',
-                            label: '北京烤鸭'
-                        }, {
-                            value: '选项8',
-                            label: '北京烤鸭'
-                        }],
+                        options: [],
                         value: ''
                     }
-                }
+                },
+								methods: {
+									getRemoteData(val) {
+										this.options = 
+											[
+												{
+												value: '选项1',
+												label: '黄金糕黄金糕黄金糕黄金糕'
+											}, {
+												value: '选项2',
+												label: '双皮奶'
+											}, {
+												value: '选项3',
+												label: '蚵仔煎'
+											}, {
+												value: '选项4',
+												label: '龙须面'
+											}, {
+												value: '选项5',
+												label: '北京烤鸭'
+											}, {
+												value: '选项6',
+												label: '北京烤鸭'
+											}, {
+												value: '选项7',
+												label: '北京烤鸭'
+											}, {
+												value: '选项8',
+												label: '北京烤鸭'
+											}
+										]
+									}
+								}
             }
             var Ctor = Vue.extend(Main)
             new Ctor().$mount('#app')
