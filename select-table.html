@@ -86,47 +86,47 @@
     </div>
     <script>
         var Main = {
-                data() {
-                    return {
-                        options: [],
-                        value: ''
-                    }
-                },
-								methods: {
-									getRemoteData(val) {
-										this.options = 
-											[
-												{
-												value: '选项1',
-												label: '黄金糕黄金糕黄金糕黄金糕'
-											}, {
-												value: '选项2',
-												label: '双皮奶'
-											}, {
-												value: '选项3',
-												label: '蚵仔煎'
-											}, {
-												value: '选项4',
-												label: '龙须面'
-											}, {
-												value: '选项5',
-												label: '北京烤鸭'
-											}, {
-												value: '选项6',
-												label: '北京烤鸭'
-											}, {
-												value: '选项7',
-												label: '北京烤鸭'
-											}, {
-												value: '选项8',
-												label: '北京烤鸭'
-											}
-										]
-									}
+					data() {
+							return {
+									options: [],
+									value: ''
+							}
+					},
+					methods: {
+						getRemoteData(val) {
+							this.options = 
+								[
+									{
+									value: '选项1',
+									label: '黄金糕黄金糕黄金糕黄金糕'
+								}, {
+									value: '选项2',
+									label: '双皮奶'
+								}, {
+									value: '选项3',
+									label: '蚵仔煎'
+								}, {
+									value: '选项4',
+									label: '龙须面'
+								}, {
+									value: '选项5',
+									label: '北京烤鸭'
+								}, {
+									value: '选项6',
+									label: '北京烤鸭'
+								}, {
+									value: '选项7',
+									label: '北京烤鸭'
+								}, {
+									value: '选项8',
+									label: '北京烤鸭'
 								}
-            }
-            var Ctor = Vue.extend(Main)
-            new Ctor().$mount('#app')
+							]
+						}
+					}
+				}
+				var Ctor = Vue.extend(Main)
+				new Ctor().$mount('#app')
     </script>
 </body>
 </html>
